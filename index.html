@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Board</title>
+    <title>Minesweeper</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,129 +14,34 @@
 
     <!-- Stylesheet -->
     <link href="style.css" rel="stylesheet">
+
+    <!-- Don't put script here, it will cause querySelector bugs as the variable defined with querySelector would be null-->
 </head>
 
 <body>
     <div class="
     game-container">
         <header class="game-panel">
-            <h1>Game Board</h1>
+            <h1>Minesweeper</h1>
             <div class="score">
-                <span>SCORE</span>
-                <span>00000</span>
+                <span class="score-label">SCORE</span>
+                <span class="score-counter">00000</span>
             </div>
         </header>
         <main class="game-board">
-            <div class="grid">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
+            <div class="grid"></div>
+
             <div class="end-game-screen hidden">
                 <!-- applying two classes: c1 c2-->
                 <h2 class="end-game-text">Game<br />Over</h2>
-                <button class="btn">Play again</button>
+                <button class="btn play-again">Play again</button>
             </div>
 
         </main>
     </div>
+    <!-- Reminder: put script below to avoid querySelector bug as mention above in line 18-->
+    <!-- Script -->
+    <script src="./script.js"></script>
 </body>
 
 </html>

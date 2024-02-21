@@ -13,6 +13,7 @@ body {
 
 .game-container {
     /*background-color: yellow;*/
+    width: 484px;
 }
 
 .game-panel {}
@@ -37,6 +38,7 @@ h1 {
 .grid {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .cell {
@@ -83,4 +85,15 @@ h1 {
 
 .hidden {
     display: none;
+}
+
+.cell-clicked {
+    background-color: rgb(157, 197, 199);
+    cursor: not-allowed;
+}
+
+.cell-bomb {
+    background-image: url('./images/bomb.png');
+    background-size: contain;
+    background-position: center;
 }
