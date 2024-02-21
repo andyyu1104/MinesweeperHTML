@@ -12,13 +12,14 @@ body {
 }
 
 .game-container {
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
 .game-panel {}
 
 .game-board {
     border: 2px solid rgb(0, 23, 50);
+    position: relative;
 }
 
 h1 {
@@ -42,4 +43,44 @@ h1 {
     border: 1px solid black;
     height: 48px;
     width: 48px;
+    cursor: pointer;
+}
+
+.end-game-screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: rgb(241, 117, 78, 0.7);
+}
+
+.end-game-text {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P';
+}
+
+.btn {
+    font-size: 24px;
+    font-family: 'Darker Grotesque';
+    padding: 4px 20px 8px 20px;
+    /* values: top right bottom left */
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 2px solid rgb(0, 23, 50);
+}
+
+.btn:hover {
+    background-color: rgb(203, 224, 221);
+}
+
+.hidden {
+    display: none;
 }
