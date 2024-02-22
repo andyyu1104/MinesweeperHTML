@@ -34,12 +34,14 @@ for (let i = 1; i <= 100; i++) {
         if (bombsList.includes(i)) { //clicked on a bomb
             cell.classList.add('cell-bomb');
             endGame(false);
-        }
-        cell.classList.add('cell-clicked');
-        updateScore();
+        } else {
+            cell.classList.add('cell-clicked');
+            updateScore();
 
-        //countSurroundingMine(i);
-        revealNumbersofBomb(i);
+            //countSurroundingMine(i);
+            revealNumbersofBomb(i);
+        }
+
 
     })
 
@@ -56,7 +58,7 @@ while (bombsList.length < totalBombs) {
     }
 
 }
-bombsList.sort();// not necessary but easy to know where the bomb are:3
+bombsList.sort();// not necessary but easy to read where the bomb are:3
 
 playAgainButton.addEventListener('click', function () {
     window.location.reload();
@@ -149,19 +151,24 @@ function countSurroundingMine(cellIndex) {
     }
 
     let foundBombs = checkList.filter((dir) => bombsList.includes(dir)).length;
-    if (foundBombs) {
-        return foundBombs;
-    } else {
-        return 0;
-    }
+    return foundBombs;
 
     //console.log(`You clicked on cell number ${cellIndex}, with ${foundBombs} bombs`);
 
 }
 
 function revealNumbersofBomb(cellIndex) {
-    const cell = document.querySelectorAll('.cell')[cellIndex - 1]
-    cell.innerText = countSurroundingMine(cellIndex);
+    const cell = document.querySelectorAll('.cell')[cellIndex - 1];
+    numOfbombs = countSurroundingMine(cellIndex);
+    if (numOfbombs) {
+        cell.innerText = countSurroundingMine(cellIndex);
+    } else {
+        //flood happened
+    }
+
 }
 
+function flood(params) {
+
+}
 
