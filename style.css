@@ -79,6 +79,7 @@ h1 {
     border: 2px solid rgb(0, 23, 50);
 }
 
+/* cursor on the button */
 .btn:hover {
     background-color: rgb(203, 224, 221);
 }
@@ -96,4 +97,5 @@ h1 {
     background-image: url('./images/bomb.png');
     background-size: contain;
     background-position: center;
+    background-color: rgb(246, 16, 16);
 }
