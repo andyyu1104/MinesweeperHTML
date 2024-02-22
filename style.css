@@ -46,6 +46,7 @@ h1 {
     height: 48px;
     width: 48px;
     cursor: pointer;
+    text-align: center;
 }
 
 .end-game-screen {
