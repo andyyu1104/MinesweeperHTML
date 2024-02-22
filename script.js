@@ -38,7 +38,8 @@ for (let i = 1; i <= 100; i++) {
         cell.classList.add('cell-clicked');
         updateScore();
 
-
+        //countSurroundingMine(i);
+        revealNumbersofBomb(i);
 
     })
 
@@ -100,5 +101,67 @@ function revealAllBombs() {
     }
 }
 
+//challenging task
+function countSurroundingMine(cellIndex) {
+    //const curCell = document.querySelectorAll('.cell')[cellIndex - 1];
+    let isTop;
+    let isLeft;
+    let isRight;
+    let isBottom;
+
+    if (cellIndex < 11) {
+        isTop = true;
+    }
+    if (cellIndex > 90) {
+        isBottom = true;
+    }
+    if (cellIndex % 10 === 1) {
+        isLeft = true;
+    }
+    if (cellIndex % 10 === 0) {
+        isRight = true;
+    }
+
+    const NW = cellIndex - 11;
+    const N = cellIndex - 10;
+    const NE = cellIndex - 9;
+    const W = cellIndex - 1;
+    const E = cellIndex + 1;
+    const SW = cellIndex + 9;
+    const S = cellIndex + 10;
+    const SE = cellIndex + 11;
+
+    let checkList = [];
+    if (isLeft && isTop) {
+        checkList.push(E, S, SE);
+    } else if (isRight && isTop) {
+        checkList.push(W, SW, S);
+    } else if (isLeft && isBottom) {
+        checkList.push(N, NE, E);
+    } else if (isRight && isBottom) {
+        checkList.push(NW, N, W);
+    } else if (isRight) {
+        checkList.push(NW, N, W, SW, S);
+    } else if (isLeft) {
+        checkList.push(NE, N, E, SE, S);
+    } else {
+        checkList.push(NW, N, NE, W, E, SW, S, SE);
+    }
+
+    let foundBombs = checkList.filter((dir) => bombsList.includes(dir)).length;
+    if (foundBombs) {
+        return foundBombs;
+    } else {
+        return 0;
+    }
+
+    //console.log(`You clicked on cell number ${cellIndex}, with ${foundBombs} bombs`);
+
+}
+
+function revealNumbersofBomb(cellIndex) {
+    const cell = document.querySelectorAll('.cell')[cellIndex - 1]
+    cell.innerText = countSurroundingMine(cellIndex);
+}
 
 
