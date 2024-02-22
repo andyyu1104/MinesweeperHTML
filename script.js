@@ -12,7 +12,7 @@ const playAgainButton = document.querySelector('.play-again');
 
 //Initialise variables needed for game setup
 const totalCells = 100;
-const totalBombs = 6;
+const totalBombs = 12;
 const maxScore = totalCells - totalBombs;
 const bombsList = [];
 
@@ -35,8 +35,9 @@ for (let i = 1; i <= 100; i++) {
             cell.classList.add('cell-bomb');
             endGame(false);
         } else {
-            cell.classList.add('cell-clicked');
-            updateScore();
+            //two lines below will be perfromed in revealNumbersofBomb()
+            //cell.classList.add('cell-clicked'); 
+            //updateScore();
 
             //countSurroundingMine(i);
             revealNumbersofBomb(i);
@@ -158,17 +159,50 @@ function countSurroundingMine(cellIndex) {
 }
 
 function revealNumbersofBomb(cellIndex) {
+    // const cell = document.querySelectorAll('.cell')[cellIndex - 1];
+    // numOfbombs = countSurroundingMine(cellIndex);
+    // if (numOfbombs) {
+    //     cell.innerText = countSurroundingMine(cellIndex);
+    // } else {
+    //     //flood happened
+    // }
+
+
+
+
     const cell = document.querySelectorAll('.cell')[cellIndex - 1];
-    numOfbombs = countSurroundingMine(cellIndex);
-    if (numOfbombs) {
-        cell.innerText = countSurroundingMine(cellIndex);
-    } else {
-        //flood happened
+
+    if (cellIndex < 1 || cellIndex > 100 || bombsList.includes(cellIndex) || cell.classList.contains('cell-clicked')) {
+        console.log("it didn't reveal a number.")
+        return;
     }
 
+    numOfbombs = countSurroundingMine(cellIndex);
+    cell.classList.add('cell-clicked');
+    updateScore();
+    if (numOfbombs !== 0) {
+        cell.innerText = numOfbombs;
+    } else {
+        flood(cellIndex);
+    }
 }
 
-function flood(params) {
+function flood(cellIndex) {
+
+    revealNumbersofBomb(cellIndex - 10);
+
+    if (cellIndex % 10 !== 0) {
+        revealNumbersofBomb(cellIndex - 9);
+        revealNumbersofBomb(cellIndex + 1);
+        revealNumbersofBomb(cellIndex + 11);
+    }
+    if (cellIndex % 10 !== 1) {
+        revealNumbersofBomb(cellIndex - 11);
+        revealNumbersofBomb(cellIndex - 1);
+        revealNumbersofBomb(cellIndex + 9);
+    }
+
+    revealNumbersofBomb(cellIndex + 10);
 
 }
 
