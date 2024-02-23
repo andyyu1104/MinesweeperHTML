@@ -82,6 +82,7 @@ function endGame(isVictory) {
     if (isVictory) {
         endGameText.innerHTML = 'YOU<br />WON';
         endGameScreen.classList.add('win');
+        revealAllBombs();
     } else {
         endGameText.innerHTML = 'YOU<br />LOSE';
         endGameScreen.classList.add('lose');
@@ -104,7 +105,7 @@ function revealAllBombs() {
     }
 }
 
-//challenging task
+//challenging task: check number of surrounding mines
 function countSurroundingMine(cellIndex) {
     //const curCell = document.querySelectorAll('.cell')[cellIndex - 1];
     let isTop;
@@ -159,21 +160,10 @@ function countSurroundingMine(cellIndex) {
 }
 
 function revealNumbersofBomb(cellIndex) {
-    // const cell = document.querySelectorAll('.cell')[cellIndex - 1];
-    // numOfbombs = countSurroundingMine(cellIndex);
-    // if (numOfbombs) {
-    //     cell.innerText = countSurroundingMine(cellIndex);
-    // } else {
-    //     //flood happened
-    // }
-
-
-
-
     const cell = document.querySelectorAll('.cell')[cellIndex - 1];
 
+    //the function will return when the current index is out of grid, a bomb and clicked before. 
     if (cellIndex < 1 || cellIndex > 100 || bombsList.includes(cellIndex) || cell.classList.contains('cell-clicked')) {
-        console.log("it didn't reveal a number.")
         return;
     }
 
@@ -181,21 +171,25 @@ function revealNumbersofBomb(cellIndex) {
     cell.classList.add('cell-clicked');
     updateScore();
     if (numOfbombs !== 0) {
-        cell.innerText = numOfbombs;
+        cell.innerText = numOfbombs; //reveal the number on the html
     } else {
         flood(cellIndex);
     }
 }
 
+//flood fill algorithm(DFS approach)
 function flood(cellIndex) {
-
+    //flood to the top
     revealNumbersofBomb(cellIndex - 10);
 
+    //flood to the right if current index has not reached the end of the border
     if (cellIndex % 10 !== 0) {
         revealNumbersofBomb(cellIndex - 9);
         revealNumbersofBomb(cellIndex + 1);
         revealNumbersofBomb(cellIndex + 11);
     }
+
+    //flood to the left if current index has not reached the end of the border
     if (cellIndex % 10 !== 1) {
         revealNumbersofBomb(cellIndex - 11);
         revealNumbersofBomb(cellIndex - 1);

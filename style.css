@@ -13,10 +13,9 @@ body {
 
 .game-container {
     /*background-color: yellow;*/
+    margin: auto;
     width: 484px;
 }
-
-.game-panel {}
 
 .game-board {
     border: 2px solid rgb(0, 23, 50);
