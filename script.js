@@ -15,6 +15,8 @@ const totalCells = 100;
 const totalBombs = 12;
 const maxScore = totalCells - totalBombs;
 const bombsList = [];
+const clickSound = new Audio('./sfx/dig.wav');
+const mineExplodedSound = new Audio('./sfx/mineExploded.wav');
 
 let score = 0;
 
@@ -32,6 +34,7 @@ for (let i = 1; i <= 100; i++) {
         }
 
         if (bombsList.includes(i)) { //clicked on a bomb
+            mineExplodedSound.play();
             cell.classList.add('cell-bomb');
             endGame(false);
         } else {
@@ -40,6 +43,7 @@ for (let i = 1; i <= 100; i++) {
             //updateScore();
 
             //countSurroundingMine(i);
+            clickSound.play();
             revealNumbersofBomb(i);
         }
 
