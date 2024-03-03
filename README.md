@@ -4,7 +4,7 @@
 # Basic feature
  This game will have a grid of clickable cells for player to clear, meanwhile some cells contain a mine/bomb which will lead to 'Game over' situation. The objective is clearing all cells without detonating any bomb.
 
-# Challeng tasks
+# Challenge tasks
  ## Sound effect feature
   There will be a sound played after player clicks on a cell. Different sounds will be played depending on a cell contains a bomb or not.
  ## Reveal neighbour cells feature
