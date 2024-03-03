@@ -1,5 +1,6 @@
 # MinesweeperHTML
  A minesweeper game written in HTML, CSS and JS.
+ [Click here to play](https://andyyu1104.github.io/MinesweeperHTML/)
 
 # Basic feature
  This game will have a grid of clickable cells for player to clear, meanwhile some cells contain a mine/bomb which will lead to 'Game over' situation. The objective is clearing all cells without detonating any bomb.
