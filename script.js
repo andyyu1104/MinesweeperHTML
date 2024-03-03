@@ -25,11 +25,22 @@ for (let i = 1; i <= 100; i++) {
     const cell = document.createElement('div');// cell = <div></div>
     cell.classList.add('cell');//cell = <div class="cell"></div>
 
+    //When a player right click a cell
+    cell.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        if (cell.classList.contains('cell-clicked')) { //avoid clicking a clicked cell
+            return;
+        }
+        flag(i);
+
+        //cell.classList.add('cell-flag');
+    })
+
     //When a player click a cell:
     cell.addEventListener('click', function () {
         //console.log(`You clicked on cell number ${i}`);// Testing // ` ${i}` we can use the i variable.
 
-        if (cell.classList.contains('cell-clicked')) { //avoid clicking a clicked cell
+        if (cell.classList.contains('cell-clicked') || cell.classList.contains('cell-flag')) { //avoid clicking a clicked cell and flagged cell
             return;
         }
 
@@ -167,7 +178,7 @@ function revealNumbersofBomb(cellIndex) {
     const cell = document.querySelectorAll('.cell')[cellIndex - 1];
 
     //the function will return when the current index is out of grid, a bomb and clicked before. 
-    if (cellIndex < 1 || cellIndex > 100 || bombsList.includes(cellIndex) || cell.classList.contains('cell-clicked')) {
+    if (cellIndex < 1 || cellIndex > 100 || bombsList.includes(cellIndex) || cell.classList.contains('cell-clicked') || cell.classList.contains('cell-flag')) {
         return;
     }
 
@@ -204,3 +215,11 @@ function flood(cellIndex) {
 
 }
 
+function flag(cellIndex) {
+    const cell = document.querySelectorAll('.cell')[cellIndex - 1];
+    if (!cell.classList.contains('cell-flag')) {
+        cell.classList.add('cell-flag');
+    } else {
+        cell.classList.remove('cell-flag');
+    }
+}
