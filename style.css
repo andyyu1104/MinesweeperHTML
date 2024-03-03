@@ -106,3 +106,9 @@ h1 {
     background-position: center;
     background-color: rgb(246, 16, 16);
 }
+
+.cell-flag {
+    background-image: url('./images/flag.png');
+    background-position: center;
+    background-size: contain;
+}
